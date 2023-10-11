@@ -14,6 +14,7 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
+
 class HBNBCommand(cmd.Cmd):
     """Defines HBNBCommand class"""
 
@@ -71,7 +72,8 @@ class HBNBCommand(cmd.Cmd):
         print(new_instance.id)
 
     def do_show(self, arg):
-        """Prints string representation of an instance based on class name and ID
+        """Prints string representation of an instance based on
+        class name and ID
         Usage: $ show <class name> <id>"""
         args = arg.split()
         if not self._validate_class_and_id(args):
@@ -103,7 +105,8 @@ class HBNBCommand(cmd.Cmd):
         print("** no instance found **")
 
     def do_all(self, arg):
-        """Prints string representation of all class instances or instances of a specific class
+        """Prints string representation of all class instances or
+        instances of a specific class
         Usage: $ all [<class name>]"""
         args = arg.split()
         object_instances = storage.all()
@@ -124,7 +127,8 @@ class HBNBCommand(cmd.Cmd):
             print("Invalid usage of 'all' command")
 
     def do_update(self, arg):
-        """Updates an instance based on class name and ID by adding/updating an attribute
+        """Updates an instance based on class name and ID by adding/updating
+        an attribute.
         Usage: $ update <class name> <id> <attribute name> <attribute value>"""
         args = arg.split()
         if not self._validate_class_and_id(args):
@@ -149,6 +153,7 @@ class HBNBCommand(cmd.Cmd):
                     storage.save()
                     return
         print("** no instance found **")
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()

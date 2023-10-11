@@ -1,6 +1,12 @@
+#!/usr/bin/python3
+"""
+Base Model Module
+"""
+
 import uuid
 from datetime import datetime
 import models
+
 
 class BaseModel:
     """BaseModel class that defines common attributes for other classes"""
@@ -38,11 +44,16 @@ class BaseModel:
         models.storage.save()
 
     def to_dict(self):
-        """Returns a dictionary containing keys/values of __dict__ of the instance"""
-        new_dict = self.__dict__.copy()
-        if "created_at" in new_dict and isinstance(new_dict["created_at"], datetime):
-            new_dict["created_at"] = new_dict["created_at"].strftime(self.timeformat)
-        if "updated_at" in new_dict and isinstance(new_dict["updated_at"], datetime):
-            new_dict["updated_at"] = new_dict["updated_at"].strftime(self.timeformat)
-        new_dict["__class__"] = self.__class__.__name__
-        return new_dict
+        """Returns a dictionary containing keys/values
+        of __dict__ of the instance. nu_d is short for new dictionary"""
+        nu_d = self.__dict__.copy()
+
+        if "created_at" in nu_d and isinstance(nu_d["created_at"], datetime):
+            nu_d["created_at"] = nu_d["created_at"].strftime(self.timeformat)
+
+        if "updated_at" in nu_d and isinstance(nu_d["updated_at"], datetime):
+            nu_d["updated_at"] = nu_d["updated_at"].strftime(self.timeformat)
+
+        nu_d["__class__"] = self.__class__.__name
+
+        return nu_d

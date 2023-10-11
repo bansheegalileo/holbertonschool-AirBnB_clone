@@ -7,6 +7,7 @@ from typing import Any
 from models.base_model import BaseModel
 from datetime import datetime
 
+
 class Amenity(BaseModel):
     """Defines Amenity class"""
 

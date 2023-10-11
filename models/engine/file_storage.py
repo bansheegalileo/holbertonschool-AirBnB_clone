@@ -10,6 +10,7 @@ from models.amenity import Amenity  # Import Amenity class
 from models.place import Place  # Import Place class
 from models.review import Review  # Import Review class
 
+
 class FileStorage:
     def __init__(self):
         self.file_path = "./file.json"
@@ -26,9 +27,9 @@ class FileStorage:
         self.objects[key] = obj
 
     def save(self):
-        new_dict = {key: value.to_dict() for key, value in self.objects.items()}
+        nu_d = {key: value.to_dict() for key, value in self.objects.items()}
         with open(self.file_path, "w") as f:
-            json.dump(new_dict, f)
+            json.dump(nu_d, f)
 
     def reload(self):
         try:
