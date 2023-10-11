@@ -11,7 +11,7 @@ import models
 class BaseModel:
     """BaseModel class that defines common attributes for other classes"""
 
-    timeformat = "%Y-%m-%dT%H:%M:%S.%f"
+    timeformat = "%Y, %-m, %-d, %-H, %-M, %-S, %f"
 
     def __init__(self, *args, **kwargs):
         """Initializes BaseModel with attributes"""
@@ -44,16 +44,12 @@ class BaseModel:
         models.storage.save()
 
     def to_dict(self):
-        """Returns a dictionary containing keys/values
-        of __dict__ of the instance. nu_d is short for new dictionary"""
-        nu_d = self.__dict__.copy()
-
-        if "created_at" in nu_d and isinstance(nu_d["created_at"], datetime):
-            nu_d["created_at"] = nu_d["created_at"].strftime(self.timeformat)
-
-        if "updated_at" in nu_d and isinstance(nu_d["updated_at"], datetime):
-            nu_d["updated_at"] = nu_d["updated_at"].strftime(self.timeformat)
-
-        nu_d["__class__"] = self.__class__.__name
-
-        return nu_d
+        """Returns a dictionary containing keys/values of __dict__ 
+        of the instance"""
+        nd = self.__dict__.copy()
+        if "created_at" in nd and isinstance(nd["created_at"], datetime):
+            nd["created_at"] = nd["created_at"].strftime(self.timeformat)
+        if "updated_at" in nd and isinstance(nd["updated_at"], datetime):
+            nd["updated_at"] = nd["updated_at"].strftime(self.timeformat)
+        nd["__class__"] = self.__class__.__name__
+        return nd
