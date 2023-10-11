@@ -11,7 +11,7 @@ import models
 class BaseModel:
     """BaseModel class that defines common attributes for other classes"""
 
-    timeformat = "%Y, %-m, %-d, %-H, %-M, %-S, %f"
+    timeformat = "%Y-%m-%dT%H:%M:%S.%f"
 
     def __init__(self, *args, **kwargs):
         """Initializes BaseModel with attributes"""
@@ -44,7 +44,7 @@ class BaseModel:
         models.storage.save()
 
     def to_dict(self):
-        """Returns a dictionary containing keys/values of __dict__ 
+        """Returns a dictionary containing keys/values of __dict__
         of the instance"""
         nd = self.__dict__.copy()
         if "created_at" in nd and isinstance(nd["created_at"], datetime):
