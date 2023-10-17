@@ -1,0 +1,32 @@
+section.filters div.locations ul.popover,
+section.filters div.amenities ul.popover {
+  display: none;
+  position: absolute;
+  background-color: #FAFAFA;
+  width: 100%;
+  border: 1px solid #DDDDDD;
+  border-radius: 4px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+section.filters div.locations ul.popover ul.popover {
+  left: 100%;
+  top: 0;
+}
+
+section.filters div.locations ul.popover li,
+section.filters div.amenities ul.popover li {
+  padding: 10px;
+}
+
+section.filters div.locations ul.popover h2 {
+  font-size: 16px;
+  margin: 0;
+}
+
+section.filters div.locations:hover ul.popover,
+section.filters div.amenities:hover ul.popover {
+  display: block;
+}
